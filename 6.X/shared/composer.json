@@ -1,0 +1,11 @@
+{
+  "name": "mluex/docker-dev-deployer",
+  "type": "project",
+  "license": "proprietary",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require-dev": {
+    "php": ">=7.4",
+    "deployer/deployer": "^6.8"
+  }
+}
