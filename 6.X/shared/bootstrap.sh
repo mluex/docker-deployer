@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Import SSH config
 mkdir -p /tmp/.ssh/
