@@ -1,0 +1,12 @@
+version: '3.1'
+services:
+    deployer:
+        image: mluex/deployer:6.8
+        container_name: myapp_deployer
+        volumes:
+            - ./deploy.php:/opt/deployer/deploy.php
+            - ./hosts.yml:/opt/deployer/hosts.yml
+            - ../:/opt/build/app/ # Mount application root in order to build using yarn
+            - ~/.ssh/:/transfer/.ssh/:ro # Inject host machine's SSH config & keys
+        environment:
+            - TZ=Europe/Berlin
