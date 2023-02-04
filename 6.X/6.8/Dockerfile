@@ -1,7 +1,7 @@
 FROM php:7.4.25-fpm-buster
 
 # Install requirements
-RUN requirements="libcurl3-dev curl debconf git apt-transport-https apt-utils build-essential locales acl wget libzip-dev zip unzip sudo vim nano gnupg" \
+RUN requirements="libcurl3-dev curl debconf git apt-transport-https apt-utils build-essential locales acl wget libzip-dev zip unzip sudo vim nano gnupg rsync" \
     && apt-get update \
     && apt-get install -y $requirements \
     && rm -rf /var/lib/apt/lists/*
@@ -37,11 +37,11 @@ ADD https://raw.githubusercontent.com/mluex/docker-dev-deployer/master/6.X/share
     /opt/deployer/composer.json
 
 RUN mkdir -p /opt/deployer/functions/
-ADD https://github.com/mluex/docker-dev-deployer/blob/master/6.X/shared/functions/parse_home_dir.php \
+ADD https://raw.githubusercontent.com/mluex/docker-dev-deployer/master/6.X/shared/functions/parse_home_dir.php \
     /opt/deployer/functions/parse_home_dir.php
-ADD https://github.com/mluex/docker-dev-deployer/blob/master/6.X/shared/functions/resolve_cli_arguments.php \
+ADD https://raw.githubusercontent.com/mluex/docker-dev-deployer/master/6.X/shared/functions/resolve_cli_arguments.php \
     /opt/deployer/functions/resolve_cli_arguments.php
-ADD https://github.com/mluex/docker-dev-deployer/blob/master/6.X/shared/functions/rsync_upload.php \
+ADD https://raw.githubusercontent.com/mluex/docker-dev-deployer/master/6.X/shared/functions/rsync_upload.php \
     /opt/deployer/functions/rsync_upload.php
 
 WORKDIR /opt/deployer/
