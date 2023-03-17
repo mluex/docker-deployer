@@ -7,6 +7,6 @@ services:
             - ./deploy.php:/opt/deployer/deploy.php
             - ./hosts.yml:/opt/deployer/hosts.yml
             - ../:/opt/build/app/ # Mount application root in order to build using yarn
-            - ~/.ssh/:/transfer/.ssh/:ro # Inject host machine's SSH config & keys
+            - ${HOME}/.ssh/:/transfer/.ssh/:ro # Inject host machine's SSH config & keys
         environment:
             - TZ=Europe/Berlin
