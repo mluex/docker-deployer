@@ -53,6 +53,18 @@ docker-compose up -d
 docker exec -i myapp_deployer /opt/deployer/vendor/bin/dep deploy production
 ```
 
+## Additional Composer dependencies, e.g. third-party recipes
+To include additional Composer packages in the deployment pipeline (e.g. more recipes), adjust the config of your deployer container in your docker-compose.yml:
+```yaml
+version: '3.1'
+services:
+    deployer:
+        [...]
+        command: >
+            sh -c "composer require bannerstop/deployer-recipes ^6.0 &&
+                   php-fpm"
+```
+
 ## TODO
 - [ ] Image for deployer 7.X w/ PHP 8
 - [ ] More examples
