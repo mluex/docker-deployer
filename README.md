@@ -8,6 +8,20 @@ Docker image that allows to run [deployer.org](https://deployer.org/) in a conta
 - SSH config & keys pass-through from host to container.
 - rsync integration to upload arbitrary build artifacts.
 
+## Image base (since 2026-11-19)
+
+`mluex/deployer:6.8` and `mluex/deployer:6.8-node22` are thin aliases of
+[`ghcr.io/bannerstop/deployer:6.8`](https://github.com/bannerstop/docker/tree/master/deployer/6.8): Deployer 6 on the
+patched PHP 7.4 of `bannerstop/php` (EOL security backports), Node.js 22, npm, yarn 1, Composer 2. The old images ran
+PHP 7.4.25 from 2021 without any security fix. Both tags are the same image now (6.8 had Node.js 18).
+
+Rebuild after every `bannerstop/deployer` release:
+
+```shell
+docker buildx build --pull --push --platform linux/amd64,linux/arm64 -t mluex/deployer:6.8 6.X/6.8
+docker buildx build --pull --push --platform linux/amd64,linux/arm64 -t mluex/deployer:6.8-node22 6.X/6.8-node22
+```
+
 ## Basic Usage
 
 Basically, anyone can use the image as they like and as it fits their project. To do this, simply pull the desired version and run it, e.g.:
